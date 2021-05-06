@@ -1,0 +1,68 @@
+<template>
+  <input type="text" v-model="searchQueury">
+  <p v-for="rs in resultQuery" :key="rs.id">{{rs.name}}</p>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      searchQueury: null,
+      students: [
+        {
+          id: 1,
+          name: 'Rohit',
+        },
+        {
+          id: 2,
+          name: 'Mohit',
+        },
+        {
+          id: 3,
+          name: 'Samir',
+        },
+        {
+          id: 4,
+          name: 'Tarak',
+        },
+        {
+          id: 5,
+          name: 'Jigar',
+        },
+        {
+          id: 6,
+          name: 'Jay',
+        },
+        {
+          id: 7,
+          name: 'Akash',
+        },
+        {
+          id: 8,
+          name: 'Rohan',
+        },
+        {
+          id: 9,
+          name: 'Tanmay',
+        },
+        {
+          id: 10,
+          name: 'Bhumik',
+        },
+      ],
+    };
+  },
+  computed: {
+    resultQuery(){
+      if(this.searchQueury){
+        return this.students.filter((item) => {
+          return this.searchQueury.toLowerCase().split(' ').every(v => item.name.toLowerCase().includes(v));
+        });
+      }
+      else{
+        return this.students;
+      }
+    }
+  },
+};
+</script>
